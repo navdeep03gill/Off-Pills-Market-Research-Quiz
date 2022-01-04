@@ -1,0 +1,125 @@
+## Quiz Game
+## at the end of program, we get a certain output based on the quiz answers
+
+print("Begin Quiz")
+
+userengaged = input("What is your first name? ")
+
+print("Nice to meet you, "+ userengaged + "!")
+
+responselist = []
+
+q0 = input("What is your age? ")
+
+if int(q0) < 17 or int(q0) > 115:
+    print("Off Pills is only available for individuals over the age of 17.")
+    quit()
+else:
+    responselist.append(int(q0))
+
+q1 = input("When it comes to vitamins and supplements, you are: A) Informed, B) Curious, C) Skeptical. "
+           "Please type the corresponding letter: " )
+
+if q1.lower() == 'a': # create an algorithm for option A
+    print("An expert huh? Well maybe you'll learn something new! ")
+    responselist.append(q1.lower())
+
+if q1.lower() == 'b':
+    print("We're happy to help you learn more about how to improve your health! ")
+    responselist.append(q1.lower())
+
+if q1.lower() == 'c':
+    print("We hope to clarify any misconceptions with information backed by science! ")
+    responselist.append(q1.lower())
+
+if not((q1.lower() == 'a') or (q1.lower() == 'b') or (q1.lower() == 'c')):
+    print ("Invalid response. Please try again")
+    q1 = input("When it comes to vitamins and supplements, you are: A) Informed, B) Curious, C) Skeptical. "
+               "Please type the corresponding letter: ")
+
+q2 = input("Have you taken vitamins in the past? Answer with yes or no. ")
+
+if not ((q2.lower() == 'yes') or (q2.lower() == 'no')):
+    print ("Invalid response. Please try again")
+    q2 = input("Have you taken vitamins in the past? Answer with yes or no. ")
+
+responselist.append(q2.lower())
+
+if responselist[2] == 'yes':
+    q3 = input("How many vitamins or supplements do you currently take? "
+               "A) None, B) 1-4, C) 5 + . Please type the corresponding letter: ")
+    if not((q3.lower() == 'a') or (q3.lower() == 'b') or (q3.lower() == 'c')):
+        print ("Invalid response. Please try again")
+        q3 = input("How many vitamins or supplements do you currently take? "
+                   "A) None, B) 1-4, C) 5 + . Please type the corresponding letter: ")
+
+    responselist.append(q3.lower())
+
+if responselist[2] == 'no':
+    responselist.append('None')
+
+
+q4 = input("Have you taken powders in the past? Please answer with yes or no: ")
+if not ((q4.lower() == 'yes') or (q4.lower() == 'no')):
+    print ("Invalid response. Please try again")
+    q4 = input("Have you taken powders in the past? Please answer with yes or no: ")
+
+responselist.append(q4.lower())
+
+if responselist[4] == 'yes':
+    q5 = input("During a regular week, how frequently do you take powders? "
+               "A) Rarely, B) Couple days, C) Most days. Please type the corresponding letter: ")
+    if not((q5.lower() == 'a') or (q5.lower() == 'b') or (q5.lower() == 'c')):
+        print ("Invalid response. Please try again")
+        q5 = input("During a regular week, how frequently do you take powders? "
+                   "A) Rarely, B) Couple days, C) Most days. Please type the corresponding letter: ")
+    responselist.append(q5.lower())
+
+if responselist[4] == 'no':
+    responselist.append(' ')
+
+
+q6 = input("What is your gender? A) Male, B) Female, C) Non-binary. Please type the corresponding letter ")
+
+if not ((q6.lower() == 'a') or (q6.lower() == 'b') or (q6.lower() == 'c')):
+    print("Invalid response. Please try again")
+    q6 = input("What is your gender? A) Male, B) Female, C) Non-binary. Please type the corresponding letter ")
+responselist.append(q6.lower())
+
+def validresponseyesno(q):
+    if not ((q.lower() == 'yes') or (q.lower() == 'no')):
+        print("Invalid response. Please try again")
+
+def validresponseabc(q):
+    if not ((q.lower() == 'a') or (q.lower() == 'b') or (q.lower() == 'c')):
+        print("Invalid response. Please try again")
+
+if q6.lower() == "b" or q6.lower() == "c":
+    q7 = input("Are you interested in prenatal or postnatal health? Answer with yes or no: ")
+    validresponseyesno(q7)
+    responselist.append(q7)
+    if q7.lower() == 'yes':
+        q8 = input("Which of these best describes you? "
+                   "A) I'm looking to become pregnant, "
+                   "B) I'm currently pregnant, "
+                   "C) I'm looking for postnatal support: ")
+        validresponseabc(q8)
+        responselist.append(q8)
+    else:
+        responselist.append(" ")
+
+else:
+    responselist.append(" ")
+    responselist.append(" ")
+
+dataencrypt = input("Enter password to view results: ")
+if dataencrypt == "password123":
+    print("The following is the consumer data:")
+    print(responselist)
+
+
+# note: we need to create a question bank to perform data analysis
+# This is a data science project
+
+
+
